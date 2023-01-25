@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="/main.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/modules.min.css">
+    <script src="https://kit.fontawesome.com/6e295dba96.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function is_cpf(c) {
+
+            if ((c = c.replace(/[^\d]/g, "")).length != 11)
+                return false
+
+            if (c == "00000000000")
+                return false;
+
+            var r;
+            var s = 0;
+
+            for (i = 1; i <= 9; i++)
+                s = s + parseInt(c[i - 1]) * (11 - i);
+
+            r = (s * 10) % 11;
+
+            if ((r == 10) || (r == 11))
+                r = 0;
+
+            if (r != parseInt(c[9]))
+                return false;
+
+            s = 0;
+
+            for (i = 1; i <= 10; i++)
+                s = s + parseInt(c[i - 1]) * (12 - i);
+
+            r = (s * 10) % 11;
+
+            if ((r == 10) || (r == 11))
+                r = 0;
+
+            if (r != parseInt(c[10]))
+                return false;
+
+            return true;
+        }
+
+
+        function fMasc(objeto, mascara) {
+            obj = objeto
+            masc = mascara
+            setTimeout("fMascEx()", 1)
+        }
+
+        function fMascEx() {
+            obj.value = masc(obj.value)
+        }
+
+        function mCPF(cpf) {
+            cpf = cpf.replace(/\D/g, "")
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+            return cpf
+        }
+
+
+    </script>
+
+    
+
+
+
+    <script>
+        function getIp(callback) {
+            function response(s) {
+                callback(window.userip);
+
+                s.onload = s.onerror = null;
+                document.body.removeChild(s);
+            }
+
+            function trigger() {
+                window.userip = false;
+
+                var s = document.createElement("script");
+                s.async = true;
+                s.onload = function () {
+                    response(s);
+                };
+                s.onerror = function () {
+                    response(s);
+                };
+
+                s.src = "https://l2.io/ip.js?var=userip";
+                document.body.appendChild(s);
+            }
+
+            if (/^(interactive|complete)$/i.test(document.readyState)) {
+                trigger();
+            } else {
+                document.addEventListener('DOMContentLoaded', trigger);
+            }
+        }
+
+        getIp(function (ip) {
+            document.getElementById('data[ip]').value = (ip);
+
+
+        })
+    </script>
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img class="logo_img" src="/assets/img/logo.png" alt="">
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container mt-5 main">
+        <div>
+            <h3 style="text-align: center;">Formulário de Titulares de Dados</h3>
+            <p>Disponibilizamos este formulário para facilitar o exercício dos seus direitos previstos no art. 18 da Lei no 13.709/2018 – Lei Geral de Proteção de Dados (LGPD).
+            </p>
+            <p>A utilização deste formulário é facultativa, mas se trata de uma forma eficiente e segura para o processamento do seu pedido.</p>
+        </div>
+        <form action="https://sheetdb.io/api/v1/xqvvyqo085y0n" method="POST" class="formulario mt-5" id="sheetdb-form">
+
+            <div class="multiselect">
+                <h5>Tipos de Titulares</h5>
+                <div class="selectBox" onclick="showCheckboxes()">
+                    <select class="form-select" aria-label="Default select example">
+                        <option>Selecione as opções desejadas</option>
+                    </select>
+
+                    <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes">
+                    <label for="publico">
+                        <input class="form-check-input" type="checkbox" id="publico" name="data[op1-publico]"
+                            value="Público em Geral" />Público em Geral</label>
+                    <label for="empregado">
+                        <input class="form-check-input" type="checkbox" id="empregado" name="data[op1-empregado]"
+                            value="Empregado(a)" />Empregado(a)</label>
+                    <label for="dependente">
+                        <input class="form-check-input" type="checkbox" id="dependente" name="data[op1-dependente]"
+                            value="Dependente" />Dependente</label>
+                    <label for="estagiario">
+                        <input class="form-check-input" type="checkbox" id="estagiario" name="data[op1-estagiario]"
+                            value="Estagiários" />Estagiários</label>
+                    <label for="candidato">
+                        <input class="form-check-input" type="checkbox" id="candidato" name="data[op1-candidato]"
+                            value="Candidato(a) a vaga" />Candidato(a) a vaga</label>
+                    <label for="ex-empregado">
+                        <input class="form-check-input" type="checkbox" id="ex-empregado" name="data[op1-ex-empregado]"
+                            value="Ex-empregado(a)" />Ex-empregado(a)</label>
+                    <label for="fornecedor">
+                        <input class="form-check-input" type="checkbox" id="fornecedor" name="data[op1-fornecedor]"
+                            value="Fornecedor" />Fornecedor</label>
+                    <label for="prestador">
+                        <input class="form-check-input" type="checkbox" id="prestador" name="data[op1-prestador]" value="Prestador de Serviço-Terceiro" />Prestador de Serviço-Terceiro</label>
+                    <label for="parceiro">
+                        <input class="form-check-input" type="checkbox" id="parceiro" name="data[op1-parceiro]"
+                            value="Parceiro de Negócio" />Parceiro de Negócio</label>
+                    <label for="cliente">
+                        <input class="form-check-input" type="checkbox" id="cliente" name="data[op1-cliente]"
+                            value="Cliente - Planos Pagos" />Cliente - Planos Pagos</label>
+                    <label for="Procurador">
+                        <input class="form-check-input" type="checkbox" id="Procurador" name="data[op1-procurador]"
+                            value="Procurador ou Representante Legal" />Procurador ou Representante
+                        Legal</label>
+                </div>
+            </div>
+
+            <div class="multiselect">
+                <h5>Tipo de Solicitação desejada</h5>
+                <div class="selectBox" onclick="showCheckboxes2()">
+                    <select class="form-select" aria-label="Default select example">
+                        <option>Selecione as opções desejadas</option>
+                    </select>
+
+                    <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes2">
+                    <label for="confirmacao">
+                        <input class="form-check-input" type="checkbox" id="confirmacao" name="data[op2-confirmacao]"
+                            value="Confirmação da existência dos dados" />Confirmação da existência dos
+                        dados</label>
+                    <label for="acesso">
+                        <input class="form-check-input" type="checkbox" id="acesso" name="data[op2-acesso]"
+                            value="Acesso aos dados" />Acesso aos dados</label>
+                    <label for="retificacao">
+                        <input class="form-check-input" type="checkbox" id="retificacao" name="data[op2-retificacao]"
+                            value="Retificação dos dados pessoais" />Retificação dos dados
+                        pessoais</label>
+                    <label for="restricao">
+                        <input class="form-check-input" type="checkbox" id="restricao" name="data[op2-restricao]"
+                            value="Restrição de dados" />Restrição de dados</label>
+                    <label for="exclusao">
+                        <input class="form-check-input" type="checkbox" id="exclusao" name="data[op2-exclusao]" value="Exclusão dos dados pessoais" />Exclusão dos dados pessoais</label>
+                    <label for="portabilidade">
+                        <input class="form-check-input" type="checkbox" id="portabilidade"
+                            name="data[op2-portabilidade]" value="Portabilidade de dados" />Portabilidade de dados</label>
+                    <label for="informacoes-concentimento">
+                        <input class="form-check-input" type="checkbox" id="informacoes-concentimento"
+                            name="data[op2-informacoes-concentimento]" value="Informações de consentimento" />Informações de consentimento</label>
+                    <label for="revisao">
+                        <input class="form-check-input" type="checkbox" id="revisao" name="data[op2-revisao]" value="Revisão de decisão automatizada" />Revisão de decisão automatizada</label>
+                    <label for="informacoes">
+                        <input class="form-check-input" type="checkbox" id="informacoes" name="data[op2-informacoes]"
+                            value="Informações de compartilhamento" />Informações de compartilhamento</label>
+                    <label for="oposicao">
+                        <input class="form-check-input" type="checkbox" id="oposicao" name="data[op2-oposicao]" value="Oposição ao tratamento de dados" />Oposição ao tratamento de dados</label>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="contato">
+                <div class="contato_form row">
+                    <div class="col-md-6">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input required type="text" class="form-control" id="nome" name="data[nome]">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input required class="form-control cpf_confirm" id="cpf" type="text"
+                            placeholder="000.000.000-00" onkeyup="cpfCheck(this)" maxlength="14"
+                            onkeydown="javascript: fMasc( this, mCPF );" name="data[cpf]">
+                    </div>
+                    <div class="col-12">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input required type="text" class="form-control" id="email" placeholder="" name="data[email]">
+                    </div>
+                    <div class="col-12">
+                        <label for="email" class="form-label">Confirmar E-mail</label>
+                        <input required type="text" class="form-control" id="confirmar_email" placeholder="">
+                    </div>
+                    <div class="col-12">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000"
+                            maxlength="15" name="data[telefone]">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label" for="descricao">Descrição</label>
+                        <textarea class="form-control" name="data[descricao]" id="descricao" cols="30"
+                            rows="3"></textarea>
+
+
+                    </div>
+                    <textarea style="display:none ;" name="data[ip]" id="data[ip]"></textarea>
+                    <textarea style="display:none ;" name="data[data]" id="data[data]"></textarea>
+                    <textarea style="display:none ;" name="data[hora]" id="data[hora]"></textarea>
+
+
+                    <div class="col-12 mt-3 text-align-center">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <script>
+                var email = document.getElementById("email")
+                    , confirmar_email = document.getElementById("confirmar_email");
+
+                function validateEmail() {
+                    if (email.value != confirmar_email.value) {
+                        confirmar_email.setCustomValidity("Confirme o seu e-mail");
+                    } else {
+                        confirmar_email.setCustomValidity('');
+                    }
+                }
+
+                email.onchange = validateEmail;
+                confirmar_email.onkeyup = validateEmail;
+            </script>
+            <script>
+                var form = document.getElementById('sheetdb-form');
+                form.addEventListener("submit", e => {
+                    e.preventDefault();
+                    fetch(form.action, {
+                        method: "POST",
+                        body: new FormData(document.getElementById("sheetdb-form")),
+                    }).then(
+                        response => response.json()
+                    ).then((html) => {
+                        // you can put any JS code here
+
+                        Swal.fire({
+                            title: 'Em breve entraremos em contato',
+                            text: "Mais Chat",
+                            icon: 'success',
+                            confirmButtonColor: '#656d78',
+                            confirmButtonText: 'OK'
+                        })
+
+
+                        setTimeout(function () {
+                            window.location.href = "https://maischat.com/blog/"
+                        }, 2000)
+                    });
+                });
+            </script>
+            <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+            <script type="text/javascript">
+                jQuery(window).load(function ($) {
+                    atualizaRelogio();
+                });
+            </script>
+            <script>
+                function atualizaRelogio() {
+                    var momentoAtual = new Date();
+
+                    var vhora = momentoAtual.getHours();
+                    var vminuto = momentoAtual.getMinutes();
+                    var vsegundo = momentoAtual.getSeconds();
+
+                    var vdia = momentoAtual.getDate();
+                    var vmes = momentoAtual.getMonth() + 1;
+                    var vano = momentoAtual.getFullYear();
+
+                    if (vdia < 10) { vdia = "0" + vdia; }
+                    if (vmes < 10) { vmes = "0" + vmes; }
+                    if (vhora < 10) { vhora = "0" + vhora; }
+                    if (vminuto < 10) { vminuto = "0" + vminuto; }
+                    if (vsegundo < 10) { vsegundo = "0" + vsegundo; }
+
+                    dataFormat = vdia + " / " + vmes + " / " + vano;
+                    horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+
+                    document.getElementById("data[data]").innerHTML = dataFormat;
+                    document.getElementById("data[hora]").innerHTML = horaFormat;
+
+                    setTimeout("atualizaRelogio()", 1000);
+                }
+            </script>
+
+
+
+        </form>
+
+    </main>
+
+
+
+
+    <footer class="mt-5 footer_pagina">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <div class="footer_contato">
+                        <img class="img_footer" src="/assets/img/logo.png" alt="">
+                        <p class="endereco">Av. Paulista, 1536- Bela Vista</br>
+                            01310-200 São Paulo - BR</p>
+                        <a class="link_footer" href="mailto:mais@mais.chat">Email: mais@mais.chat</a>
+                        <div>
+                            <a class="link_footer" href="https://wa.me/558000708000">Tel:
+                                0800 070 8000</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer_link">
+                        <h4 class="titulo_link">Links Úteis</h4>
+                        <div class="row">
+                            <a target="_blank" href="https://maischat.com/">Site</a>
+                            <a target="_blank" href="https://maischat.com/blog/">Blog</a>
+                            <a target="_blank" href="https://maischat.com/privacidade.html">
+                                Privacidade</a>
+                            <a target="_blank" href="https://maischat.com/termos.html">Termos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                    <div class="redes_sociais">
+                        <h4 class="titulo_link">Redes Sociais</h4>
+                        <div class="rede_sociais">
+                            <a href="https://www.facebook.com/maischatbr" target="_blank"><i
+                                    class="ico fa-brands fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/maischatbr/" target="_blank"><i
+                                    class="ico fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/558000708000" target="_blank"><i
+                                    class="ico fa-brands fa-whatsapp"></i></a>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="text-align-center mt-3">
+                    <a href="https://maischat.com/" rel="nofollow noopener" target="_blank" style="color: #aab2bd; ">©
+                        2023. Mais Chat Tecnologia Ltda</a>
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

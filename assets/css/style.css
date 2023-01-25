@@ -1,0 +1,157 @@
+p {
+  margin: 0;
+}
+
+body {
+  background-color: rgba(128, 128, 128, 0.144);
+}
+
+.container {}
+
+.navbar {
+  background-color: #24262A;
+  justify-content: center;
+
+}
+
+.logo_img {
+  width: 250px;
+  margin: 1rem;
+}
+
+
+@media only screen and (max-width: 2000px) and (min-width: 780px) {
+  .main {
+    width: 800px;
+  }
+
+}
+
+@media only screen and (max-width: 420px) and (min-width: 320px) {
+  .main {
+    width: 90%;
+  }
+
+  .footer_pagina {
+    text-align: center;
+    padding-top: 2rem;
+    padding-left: 0;
+    
+    margin: 0;
+  }
+
+}
+
+.main {
+  align-items: center;
+}
+
+
+/* .multiselect {
+    width: 200px;
+  } */
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  cursor: pointer;
+}
+
+
+#checkboxes2 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes2 label {
+  display: block;
+}
+
+#checkboxes2 label:hover {
+  cursor: pointer;
+}
+
+footer {
+  background-color: #24262A;
+  padding-top: 2rem;
+  padding-left: 5rem;
+
+}
+
+
+
+.img_footer {
+  width: 150px;
+
+}
+
+.endereco {
+  color: white;
+  font-size: 14px;
+}
+
+.link_footer {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.rede_sociais a {
+  padding: 10px;
+  font-size: 25px;
+  color: white;
+}
+
+.rede_sociais a:hover {
+  color: #0AC775;
+}
+
+.titulo_link {
+  color: white;
+
+}
+
+.footer_link a {
+  color: white;
+}
+
+.footer_link a:hover {
+  color: #0AC775;
+}
+
+.btn {
+  background-color: #0AC775;
+  border: #0AC775;
+  width: 300px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #069457;
+}
+
+
