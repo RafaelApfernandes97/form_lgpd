@@ -154,6 +154,11 @@ footer {
   background-color: #069457;
 }
 
+.contato_form input::placeholder {
+  color: rgba(128, 128, 128, 0.575);
+}
+
+
 /* .contato--form {
   margin: 1rem 0;
 }
